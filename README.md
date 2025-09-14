@@ -1,7 +1,8 @@
 # Set Up the Spring Legacy Project Environment
 
-## Set UpJava Development Kit
-- This document is based on Java Development Kit 1.8
+- This document is based on the "Linux" operating system environment.
+
+## Set Up Java Development Kit
 
 ### 1. Install SDKMAN!
 
@@ -14,6 +15,7 @@ curl -s "https://get.sdkman.io" | bash
   - If you encounter the following error message, please install unzip.
 
 ```
+< Error Message >
 Please install unzip on your system using your favourite package manager.
 ```
 
@@ -49,9 +51,7 @@ echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
----
-
-## Set Up Visual Studio Code
+## Initialize Java Project with Maven in Visual Studio Code
 
 ### 1. Install Extension for Visual Studio Code
 
@@ -60,34 +60,19 @@ source ~/.bashrc
 - indent-rainbow
 - Material Icon Theme
 
-### 2. Initialize Spring Legacy Project to use Visual Studio Code
-
-- [ctrl + shift + p] Java: Create Java project
-- [click] Maven
-- [click] More...
-- [click] spring-mvc-archetype: An extremely simple Spring MVC
-- [click] 1.0.9
-- [click] com.samples
-- [click] community
-- [click] Select "workspace" folder and then "Select Destination Folder"
-
----
-
-## Initialize Java Project with Maven
-
-### 1. Install Maven
+### 2. Install Maven
 
 ```bash
 sudo apt install maven
 ```
 
-### 2. Check Maven version
+### 3. Check Maven version
 
 ```bash
 mvn --version
 ```
 
-### 3. Initialize Java Project with Maven
+### 4. Initialize Java Project with Maven
 
 - groupId: com.sample
 - artifactId: community-legacy
@@ -100,9 +85,9 @@ mvn --version
 mvn archetype:generate \
   -DgroupId=com.sample \
   -DartifactId=community-legacy \
-  -DarchetypeArtifactId=spring-mvc-archetype \
-  -DarchetypeGroupId=org.springframework \
-  -DarchetypeVersion=1.0.9 \
+  -DarchetypeArtifactId=maven-archetype-webapp \
+  -DarchetypeGroupId=org.apache.maven.archetypes \
+  -DarchetypeVersion=1.4 \
   -DinteractiveMode=false
 ```
 
@@ -128,7 +113,21 @@ sdk install tomcat 9.0.88
 sdk use tomcat 9.0.88
 ```
 
-### 4. Execute Spring Legacy Project
+### 4. Add tomcat7 plugin to pom.xml
+
+```xml
+<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.2</version>
+  <configuration>
+    <port>8080</port>
+    <path>/</path>
+  </configuration>
+</plugin>
+```
+
+### 5. Execute Spring Legacy Project
 
 ```bash
 mvn tomcat7:run
