@@ -20,13 +20,17 @@
           for(int i = 2; i <= 9; i++) {
         %>
           <a href="./show-multiplication-table.jsp?number=<%= i %>" class="number-card">
-            <div class="number-displaay"><%= i %></div>
+            <div class="number-display"><%= i %></div>
             <div class="number-label">Multiply by <%= i %></div>
           </a>
         <%
           }
         %>
       </div>
+    </div>
+
+    <div class="back-link">
+      <a href="../main/main.jsp">← Back to Home</a>
     </div>
   </div>
 </body>
