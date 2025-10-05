@@ -26,13 +26,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiplication Table</title>
   <link rel="stylesheet" href="../../css/common/layout.css">
-  <link rel="stylesheet" href="../../css/pages/show-multiplication-table.css">
+  <link rel="stylesheet" href="../../css/pages/multiplicationTableDetail.css">
   <%
     if(!isValidNumber) {
   %>
     <script>
       alert("Invalid value! Please enter a number between 2 and 9.");
-      window.location.href="./select-number.jsp";
+      window.location.href="./multiplicationTableSelect.jsp";
     </script>
   <%
     }
@@ -59,7 +59,7 @@
     </div>
 
     <div class="navigation-links">
-      <a href="./select-number.jsp" class="back-btn">← Choose Another Number</a>
+      <a href="./multiplicationTableSelect.jsp" class="back-btn">← Choose Another Number</a>
       <a href="../main/main.jsp" class="home-btn">🏠 Back to Home</a>
     </div>
   </div>
