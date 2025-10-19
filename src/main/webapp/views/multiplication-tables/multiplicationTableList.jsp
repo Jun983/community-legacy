@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.sample.multiplication.table.domain.MultiplicationTable" %>
-<%@ page import="com.sample.multiplication.table.domain.MultiplicationTableRow" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,32 +14,25 @@
     <h1>🔢 Multiplication Tables</h1>
 
     <div class="multiplication-tables-container">
-      <%
-        List<MultiplicationTable> multiplicationTables = (List<MultiplicationTable>) request.getAttribute("multiplicationTables");
-        if (multiplicationTables != null) {
-          for (MultiplicationTable table : multiplicationTables) {
-      %>
-            <div class="multiplication-table">
-              <h3>Multiply by <%= table.getNumber() %></h3>
-              <ul>
-                <%
-                  for (MultiplicationTableRow row : table.getRows()) {
-                %>
-                    <li><%= row.getMultiplier() %> × <%= row.getMultiplicand() %> = <%= row.getProduct() %></li>
-                <%
-                  }
-                %>
-              </ul>
-            </div>
-      <%
-          }
-        }
-      %>
+      <c:if test="${multiplicationTables != null}">
+        <c:forEach var="table" items="${multiplicationTables}">
+          <div class="multiplication-table">
+            <h3>Multiply by <c:out value="${table.number}" /></h3>
+            <ul>
+              <c:forEach var="row" items="${table.rows}">
+                <li><c:out value="${row.multiplier} x ${row.multiplicand} = ${row.product}" /></li>
+              </c:forEach>
+            </ul>
+          </div>
+        </c:forEach>
+      </c:if>
     </div>
 
     <div class="navigation-links">
-      <a href="<%= request.getContextPath() %>/multiplication-tables/selectMultiplicationTableView.do" class="back-btn">🎯 Select Individual Number</a>
-      <a href="<%= request.getContextPath() %>/mainView.do" class="home-btn">🏠 Back to Home</a>
+      <c:url value="/multiplication-tables/selectMultiplicationTableView.do" var="selectMultiplicationTableViewUrl" />
+      <a href="${selectMultiplicationTableViewUrl}" class="back-btn">🎯 Select Individual Number</a>
+      <c:url value="/mainView.do" var="mainViewUrl" />
+      <a href="${mainViewUrl}" class="home-btn">🏠 Back to Home</a>
     </div>
   </div>
 </body>
