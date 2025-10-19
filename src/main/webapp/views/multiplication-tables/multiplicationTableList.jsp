@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Multiplication Tables</title>
   <link rel="stylesheet" href="../../css/common/layout.css">
+  <link rel="stylesheet" href="../../css/common/header.css">
   <link rel="stylesheet" href="../../css/pages/multiplicationTableList.css">
 </head>
 <body>
-  <div class="container multiplication-tables-page">
+  <jsp:include page="../common/header.jsp" />
+
+  <main class="multiplication-tables-page">
     <h1>🔢 Multiplication Tables</h1>
 
     <div class="multiplication-tables-container">
@@ -34,6 +37,6 @@
       <c:url value="/mainView.do" var="mainViewUrl" />
       <a href="${mainViewUrl}" class="home-btn">🏠 Back to Home</a>
     </div>
-  </div>
+  </main>
 </body>
 </html>

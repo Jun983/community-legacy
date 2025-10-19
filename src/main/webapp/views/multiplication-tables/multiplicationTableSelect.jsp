@@ -7,10 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Choose a Number - Multiplication Tables</title>
   <link rel="stylesheet" href="../../css/common/layout.css">
+  <link rel="stylesheet" href="../../css/common/header.css">
   <link rel="stylesheet" href="../../css/pages/multiplicationTableSelect.css">
 </head>
 <body>
-  <div class="container select-number-page">
+  <jsp:include page="../common/header.jsp" />
+  
+  <main class="select-number-page">
     <h1>🧮 Choose a Number</h1>
 
     <div class="selection-container">
@@ -33,8 +36,8 @@
 
     <div class="back-link">
       <c:url value="/mainView.do" var="mainViewUrl" />
-      <a href="${mainViewUrl}">← Back to Home</a>
+      <a href="${mainViewUrl}" class="home-btn">🏠 Back to Home</a>
     </div>
-  </div>
+  </main>
 </body>
 </html>
